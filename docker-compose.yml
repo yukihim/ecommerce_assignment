@@ -26,6 +26,42 @@ services:
       - postgres
     restart: unless-stopped
 
+  backend:
+    image: node:20-alpine
+    container_name: medusa_backend
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./my-medusa-store:/app
+      - medusa_node_modules:/app/node_modules
+    environment:
+      DATABASE_URL: postgres://quan:quan@postgres:5432/ecomstore
+      NODE_ENV: development
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  storefront:
+    image: node:20-alpine
+    container_name: medusa_storefront
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./my-medusa-store-storefront:/app
+      - storefront_node_modules:/app/node_modules
+    environment:
+      NEXT_PUBLIC_MEDUSA_BACKEND_URL: http://backend:9000
+      NODE_ENV: development
+    depends_on:
+      - backend
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   pgadmin_data:
+  medusa_node_modules:
+  storefront_node_modules:
