@@ -8,13 +8,13 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
 - `my-medusa-store-storefront/` - Next.js storefront application (UX/UI for customer)
 
 ## Prerequisites
-- Node.js (MUST BE: v20 or later)
+- ‼️**IMPORTANT**‼️ Node.js (MUST BE: v20 or later)
 - Docker (not optimized)
 
 ## Getting Started
 
 ### Docker initiation for database
-1. Open Docker app
+1. ‼️**IMPORTANT**‼️ Open Docker app
 
 2. Run docker-compose.yml:
    ```bash
@@ -32,9 +32,9 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
    npm install
    ```
 
-3. Set up environment variables: Add the .env file i gave you on Messenger
+3. ‼️**IMPORTANT**‼️ Set up environment variables: Add the .env file i gave you on Messenger
 
-4. Run migration for demo data:
+4. ‼️**IMPORTANT**‼️ Run migration for demo data:
    ```bash
    npm run migration
    ```
@@ -55,7 +55,7 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
    npm install
    ```
 
-3. Set up environment variables: Add the .env.local file i gave you on Messenger
+3. ‼️**IMPORTANT**‼️ Set up environment variables: Add the .env.local file i gave you on Messenger
 
 4. Start the development server:
    ```bash
