@@ -30,6 +30,8 @@ const StripeWrapper: React.FC<StripeWrapperProps> = ({
     )
   }
 
+  console.log("Stripe key: ", stripeKey)
+
   if (!stripePromise) {
     throw new Error(
       "Stripe promise is missing. Make sure you have provided a valid Stripe key."
@@ -41,6 +43,8 @@ const StripeWrapper: React.FC<StripeWrapperProps> = ({
       "Stripe client secret is missing. Cannot initialize Stripe."
     )
   }
+
+  console.log("Stripe key: ", stripeKey)
 
   return (
     <StripeContext.Provider value={true}>

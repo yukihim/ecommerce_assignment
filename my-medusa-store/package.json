@@ -14,6 +14,7 @@
   ],
   "scripts": {
     "migration": "medusa db:migrate",
+    "ad": "medusa user -e ad@mail.com -p ad -i admin",
     "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
