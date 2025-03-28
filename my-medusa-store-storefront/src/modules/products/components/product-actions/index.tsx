@@ -11,6 +11,8 @@ import { useParams } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
 import ProductPrice from "../product-price"
 import MobileActions from "./mobile-actions"
+import { VariantWithDigitalProduct } from "../../../../types/global"
+import { getDigitalProductPreview } from "../../../../lib/data/products"
 
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
@@ -29,6 +31,7 @@ const optionsAsKeymap = (
 
 export default function ProductActions({
   product,
+  region,
   disabled,
 }: ProductActionsProps) {
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
@@ -52,7 +55,7 @@ export default function ProductActions({
       const variantOptions = optionsAsKeymap(v.options)
       return isEqual(variantOptions, options)
     })
-  }, [product.variants, options])
+  }, [product.variants, options]) as VariantWithDigitalProduct
 
   // update the options when a variant is selected
   const setOptionValue = (optionId: string, value: string) => {
@@ -113,6 +116,20 @@ export default function ProductActions({
     setIsAdding(false)
   }
 
+  const handleDownloadPreview = async () => {
+    if (!selectedVariant?.digital_product) {
+      return
+    }
+
+    const downloadUrl = await getDigitalProductPreview({
+      id: selectedVariant?.digital_product.id,
+    })
+
+    if (downloadUrl.length) {
+      window.open(downloadUrl)
+    }
+  }
+
   return (
     <>
       <div className="flex flex-col gap-y-2" ref={actionsRef}>
@@ -139,6 +156,16 @@ export default function ProductActions({
         </div>
 
         <ProductPrice product={product} variant={selectedVariant} />
+
+        {selectedVariant?.digital_product && (
+          <Button
+            onClick={handleDownloadPreview}
+            variant="secondary"
+            className="w-full h-10"
+          >
+            Download Preview
+          </Button>
+        )}
 
         <Button
           onClick={handleAddToCart}

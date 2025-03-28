@@ -5,6 +5,7 @@ import Addresses from "@modules/checkout/components/addresses"
 import Payment from "@modules/checkout/components/payment"
 import Review from "@modules/checkout/components/review"
 import Shipping from "@modules/checkout/components/shipping"
+import SubscriptionForm from "@modules/checkout/components/subscriptions"
 
 export default async function CheckoutForm({
   cart,
@@ -27,6 +28,10 @@ export default async function CheckoutForm({
   return (
     <div className="w-full grid grid-cols-1 gap-y-8">
       <Addresses cart={cart} customer={customer} />
+
+      <div>
+        <SubscriptionForm />
+      </div>
 
       <Shipping cart={cart} availableShippingMethods={shippingMethods} />
 

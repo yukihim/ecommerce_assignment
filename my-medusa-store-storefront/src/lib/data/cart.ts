@@ -464,3 +464,22 @@ export async function listCartOptions() {
     cache: "force-cache",
   })
 }
+
+export async function updateSubscriptionData(
+  subscription_interval: string,
+  subscription_period: number
+) {
+  const cartId = getCartId()
+  
+  if (!cartId) {
+    throw new Error("No existing cart found when placing an order")
+  }
+
+  await updateCart({
+    metadata: {
+      subscription_interval,
+      subscription_period,
+    },
+  })
+  revalidateTag("cart")
+}
