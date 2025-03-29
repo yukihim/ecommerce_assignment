@@ -24,6 +24,8 @@ export const DigitalProductsList = ({ digitalProducts }: Props) => {
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>Created Date</Table.HeaderCell>
+          <Table.HeaderCell>Expired Date</Table.HeaderCell>
           <Table.HeaderCell>Action</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
@@ -37,15 +39,13 @@ export const DigitalProductsList = ({ digitalProducts }: Props) => {
             <Table.Row key={digitalProduct.id}>
               <Table.Cell>{digitalProduct.name}</Table.Cell>
               <Table.Cell>
-                <ul>
-                  {medias?.map((media, index) => (
-                    <li key={media.id}>
-                      <a href="#" onClick={(e) => handleDownload(e, media.id)}>
-                        Download{showMediaCount ? ` ${index + 1}` : ``}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                {digitalProduct.created_date.toLocaleString()}
+              </Table.Cell>
+              <Table.Cell>
+                {digitalProduct.expired_date.toLocaleString()}
+              </Table.Cell>
+              <Table.Cell>
+                <a href="/documentation">Documentation</a>
               </Table.Cell>
             </Table.Row>
           )

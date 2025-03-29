@@ -6,7 +6,7 @@ import DigitalProductMedia from "./models/digital-product-media";
 class DigitalProductModuleService extends MedusaService({
   DigitalProduct,
   DigitalProductMedia,
-  DigitalProductOrder
+  DigitalProductOrder,
 }) {
 
 }

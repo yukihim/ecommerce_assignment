@@ -129,6 +129,7 @@ export default function ProductActions({
       window.open(downloadUrl)
     }
   }
+  console.log(selectedVariant?.digital_product)
 
   return (
     <>
@@ -157,7 +158,7 @@ export default function ProductActions({
 
         <ProductPrice product={product} variant={selectedVariant} />
 
-        {selectedVariant?.digital_product && (
+        {/* {selectedVariant?.digital_product && (
           <Button
             onClick={handleDownloadPreview}
             variant="secondary"
@@ -165,23 +166,26 @@ export default function ProductActions({
           >
             Download Preview
           </Button>
-        )}
+        )} */}
 
         <Button
           onClick={handleAddToCart}
           disabled={
-            !inStock ||
-            !selectedVariant ||
-            !!disabled ||
-            isAdding ||
-            !isValidVariant
+            !selectedVariant?.digital_product &&
+            (!inStock ||
+              !selectedVariant ||
+              !!disabled ||
+              isAdding ||
+              !isValidVariant)
           }
           variant="primary"
           className="w-full h-10"
           isLoading={isAdding}
           data-testid="add-product-button"
         >
-          {!selectedVariant && !options
+          {!!selectedVariant?.digital_product
+            ? "Add to cart"
+            : !selectedVariant && !options
             ? "Select variant"
             : !inStock || !isValidVariant
             ? "Out of stock"

@@ -26,6 +26,8 @@ export type StoreFreeShippingPrice = StorePrice & {
 export type DigitalProduct = {
   id: string
   name: string
+  created_date: Date
+  expired_date: Date
   medias?: DigitalProductMedia[]
 }
 

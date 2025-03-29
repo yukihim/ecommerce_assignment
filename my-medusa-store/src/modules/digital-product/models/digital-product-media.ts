@@ -1,6 +1,7 @@
 import { model } from "@medusajs/framework/utils"
 import { MediaType } from "../types"
 import DigitalProduct from "./digital-product"
+import { addMonths } from "date-fns";
 
 const DigitalProductMedia = model.define("digital_product_media", {
   id: model.id().primaryKey(),

@@ -14,9 +14,9 @@ const Review = ({ cart }: { cart: any }) => {
     cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0
 
   const previousStepsCompleted =
-    cart.shipping_address &&
-    cart.shipping_methods.length > 0 &&
-    (cart.payment_collection || paidByGiftcard)
+    // cart.shipping_address &&
+    (cart.shipping_methods.length > 0 && cart.payment_collection) ||
+    paidByGiftcard
 
   return (
     <div className="bg-white">
