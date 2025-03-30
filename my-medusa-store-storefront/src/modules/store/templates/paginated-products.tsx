@@ -5,6 +5,7 @@ import { Pagination } from "@modules/store/components/pagination"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { getCustomerDigitalProducts } from "@lib/data/digital-products"
+import { listOrders } from "@lib/data/orders"
 import { retrieveCart } from "@lib/data/cart"
 import { notFound } from "next/navigation"
 
@@ -109,9 +110,10 @@ export default async function PaginatedProducts({
   const ownedProducts = await getCustomerDigitalProducts()
 
   const cart = await retrieveCart().catch((error) => {
-    console.error(error)
     return notFound()
   })
+
+  const orders = await listOrders()
 
   const totalPages = Math.ceil(count / PRODUCT_LIMIT)
 
@@ -190,19 +192,30 @@ export default async function PaginatedProducts({
                   <Button variant="secondary" className="w-full h-10">
                     Contact Us
                   </Button>
-                ) : cart?.items &&
-                  cart.items.find((cItem) => {
-                    return cItem.product_title == p.title
-                  }) ? (
-                  <Text className="text-center text-wrap w-[150px] justify-self-center">
-                    Currently in cart.
-                  </Text>
                 ) : !!ownedProducts &&
                   ownedProducts.find((o) => {
                     return p.title === o.name
                   }) ? (
                   <Text className="text-center text-wrap w-[150px] justify-self-center">
                     You have already subscribed to this plan.
+                  </Text>
+                ) : orders.some((order) => {
+                    return (
+                      !!order.items &&
+                      order.items.some((item) => {
+                        return item.title == p.title
+                      })
+                    )
+                  }) ? (
+                  <Text className="text-center text-wrap w-[150px] justify-self-center">
+                    Currently checking your order.
+                  </Text>
+                ) : cart?.items &&
+                  cart.items.find((cItem) => {
+                    return cItem.product_title == p.title
+                  }) ? (
+                  <Text className="text-center text-wrap w-[150px] justify-self-center">
+                    Currently in cart.
                   </Text>
                 ) : (
                   <ProductActions disabled={true} product={p} region={region} />

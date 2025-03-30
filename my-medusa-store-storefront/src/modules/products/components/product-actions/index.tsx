@@ -129,7 +129,6 @@ export default function ProductActions({
       window.open(downloadUrl)
     }
   }
-  console.log(selectedVariant?.digital_product)
 
   return (
     <>

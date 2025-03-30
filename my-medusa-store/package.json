@@ -17,6 +17,7 @@
     "ad": "medusa user -e ad@mail.com -p ad -i admin",
     "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
+    "quick_start": "npx medusa db:setup && medusa exec ./src/scripts/seed.ts && npx medusa user -e ad@mail.com -p ad",
     "start": "medusa start",
     "dev": "medusa develop",
     "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",

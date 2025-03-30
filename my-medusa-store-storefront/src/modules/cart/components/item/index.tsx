@@ -46,23 +46,7 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
 
   return (
     <Table.Row className="w-full" data-testid="product-row">
-      <Table.Cell className="!pl-0 p-4 w-24">
-        <LocalizedClientLink
-          href={`/products/${item.product_handle}`}
-          className={clx("flex", {
-            "w-16": type === "preview",
-            "small:w-24 w-12": type === "full",
-          })}
-        >
-          <Thumbnail
-            thumbnail={item.thumbnail}
-            images={item.variant?.product?.images}
-            size="square"
-          />
-        </LocalizedClientLink>
-      </Table.Cell>
-
-      <Table.Cell className="text-left">
+      <Table.Cell className="text-left !pl-0">
         <Text
           className="txt-medium-plus text-ui-fg-base"
           data-testid="product-title"
@@ -72,37 +56,21 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
         <LineItemOptions variant={item.variant} data-testid="product-variant" />
       </Table.Cell>
 
-      {type === "full" && (
-        <Table.Cell>
-          <div className="flex gap-2 items-center w-28">
-            <DeleteButton id={item.id} data-testid="product-delete-button" />
-            <CartItemSelect
-              value={item.quantity}
-              onChange={(value) => changeQuantity(parseInt(value.target.value))}
-              className="w-14 h-10 p-4"
-              data-testid="product-select-button"
-            >
-              {/* TODO: Update this with the v2 way of managing inventory */}
-              {Array.from(
-                {
-                  length: Math.min(maxQuantity, 10),
-                },
-                (_, i) => (
-                  <option value={i + 1} key={i}>
-                    {i + 1}
-                  </option>
-                )
-              )}
-
-              <option value={1} key={1}>
-                1
-              </option>
-            </CartItemSelect>
-            {updating && <Spinner />}
-          </div>
-          <ErrorMessage error={error} data-testid="product-error-message" />
-        </Table.Cell>
-      )}
+      <Table.Cell className="!pl-0 p-4 w-24">
+        <LocalizedClientLink
+          href={`/products/${item.product_handle}`}
+          className={clx("flex", {
+            "w-16": type === "preview",
+            "small:w-24 w-12": type === "full",
+          })}
+        >
+          {/* <Thumbnail
+            thumbnail={item.thumbnail}
+            images={item.variant?.product?.images}
+            size="square"
+          /> */}
+        </LocalizedClientLink>
+      </Table.Cell>
 
       {type === "full" && (
         <Table.Cell className="hidden small:table-cell">
@@ -117,7 +85,8 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
       <Table.Cell className="!pr-0">
         <span
           className={clx("!pr-0", {
-            "flex flex-col items-end h-full justify-center": type === "preview",
+            "flex flex-col items-start h-full justify-start":
+              type === "preview",
           })}
         >
           {type === "preview" && (
@@ -137,6 +106,37 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
           />
         </span>
       </Table.Cell>
+      {type === "full" && (
+        <Table.Cell>
+          <div className="flex gap-2 items-center justify-center w-full">
+            <DeleteButton id={item.id} data-testid="product-delete-button" />
+            {/* <CartItemSelect
+              value={item.quantity}
+              onChange={(value) => changeQuantity(parseInt(value.target.value))}
+              className="w-14 h-10 p-4"
+              data-testid="product-select-button"
+            >
+              {/* TODO: Update this with the v2 way of managing inventory */}
+            {/* {Array.from(
+                {
+                  length: Math.min(maxQuantity, 10),
+                },
+                (_, i) => (
+                  <option value={i + 1} key={i}>
+                    {i + 1}
+                  </option>
+                )
+              )}
+
+              <option value={1} key={1}>
+                1
+              </option>
+            </CartItemSelect> */}
+            {/* {updating && <Spinner />} */}
+          </div>
+          <ErrorMessage error={error} data-testid="product-error-message" />
+        </Table.Cell>
+      )}
     </Table.Row>
   )
 }
