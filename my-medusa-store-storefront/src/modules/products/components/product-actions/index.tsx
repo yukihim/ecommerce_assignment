@@ -156,7 +156,7 @@ export default function ProductActions({
           )}
         </div>
 
-        <ProductPrice product={product} variant={selectedVariant} />
+        {/* <ProductPrice product={product} variant={selectedVariant} /> */}
 
         {/* {selectedVariant?.digital_product && (
           <Button
