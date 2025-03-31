@@ -27,33 +27,38 @@ export default async function Nav() {
 
           <div className="flex items-center h-full">
             <LocalizedClientLink
-              href="/"
-              className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
-              data-testid="nav-store-link"
-            >
-              Medusa Store
-            </LocalizedClientLink>
+  href="/"
+  className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase font-extrabold tracking-widest"
+  data-testid="nav-store-link"
+>
+  Medusa Store
+</LocalizedClientLink>
+
           </div>
 
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="flex items-center gap-x-6 h-full">
               <LocalizedClientLink
-                className="hover:text-ui-fg-base"
-                href="/account"
-                data-testid="nav-account-link"
-              >
-                {!auth ? <Button variant="primary">Log in</Button> : "Account"}
-              </LocalizedClientLink>
+  className="text-lg font-semibold text-black hover:text-cyan-400 transition-colors duration-300"
+  href="/account"
+  data-testid="nav-account-link"
+>
+  {!auth ? (
+    <Button variant="primary" className="px-4 py-2 rounded-lg">Log in</Button>
+  ) : (
+    <span className="hover:underline">Account</span>
+  )}
+</LocalizedClientLink>
             </div>
             {auth && (
               <Suspense
                 fallback={
                   <LocalizedClientLink
-                    className="hover:text-ui-fg-base flex gap-2"
+                    className="text-lg font-semibold text-white flex gap-2 hover:text-cyan-400 transition-colors duration-300"
                     href="/cart"
                     data-testid="nav-cart-link"
                   >
-                    Cart (0)
+                    <span className="hover:underline">Cart (0)</span>
                   </LocalizedClientLink>
                 }
               >
