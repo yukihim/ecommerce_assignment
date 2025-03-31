@@ -1,5 +1,6 @@
 import { HttpTypes } from "@medusajs/types"
 import { NextRequest, NextResponse } from "next/server"
+import { getAuthHeaders } from "@lib/data/cookies"
 
 const BACKEND_URL = process.env.MEDUSA_BACKEND_URL
 const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
@@ -103,6 +104,7 @@ async function getCountryCode(
 /**
  * Middleware to handle region selection and onboarding status.
  */
+const publicPath = ["/account", "/"]
 export async function middleware(request: NextRequest) {
   let redirectUrl = request.nextUrl.href
 
@@ -137,9 +139,14 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.includes(".")) {
     return NextResponse.next()
   }
+  // Auth checking
+  const isAuth = !!{
+    ...(await getAuthHeaders()),
+  }.authorization
 
-  const redirectPath =
-    request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname
+  const redirectPath = (!isAuth && publicPath.every((path)=> (request.nextUrl.pathname != path))) 
+  ? request.nextUrl.pathname = "/account" 
+  : request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname
 
   const queryString = request.nextUrl.search ? request.nextUrl.search : ""
 
