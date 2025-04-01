@@ -349,58 +349,58 @@ export default async function seedDemoData({ container }: ExecArgs) {
     },
   });
 
-  await createDigitalProductWorkflow(container).run({
-    input: {
-      digital_product: {
-        name: "Basic Package",
-        created_date: new Date(),
-        expired_date: addMonths(new Date(), 1),
-        medias: []
-      },
-      product: {
-        title: "Basic Package",
-        description:
-          "Designed for small businesses, allowing them to experience the chatbot feature for free with a limited number of messages per month. Suitable for the startup stage",
-        handle: "bpackage",
-        weight: 400,
-        status: ProductStatus.PUBLISHED,
-        shipping_profile_id: shippingProfile.id,
-        images: [],
-        options: [{title: "default", values: ["default"]}],
-        variants: [
-          {
-            title: "Basic Package",
-            sku: "basic_package",
-            options: {default: "default"},
-            prices: [
-              {
-                amount: 0,
-                currency_code: "vnd",
-              },
-              {
-                amount: 0,
-                currency_code: "kmr",
-              },
-              {
-                amount: 0,
-                currency_code: "eur",
-              },
-              {
-                amount: 0,
-                currency_code: "usd",
-              },
-            ],
-            manage_inventory: false,
-          },
-        ],
-        sales_channels: [
-          {
-            id: defaultSalesChannel[0].id,
-          },
-        ],
-      },
-    }
-  })
+  // await createDigitalProductWorkflow(container).run({
+  //   input: {
+  //     digital_product: {
+  //       name: "Basic Package",
+  //       created_date: new Date(),
+  //       expired_date: addMonths(new Date(), 1),
+  //       medias: []
+  //     },
+  //     product: {
+  //       title: "Basic Package",
+  //       description:
+  //         "Designed for small businesses, allowing them to experience the chatbot feature for free with a limited number of messages per month. Suitable for the startup stage",
+  //       handle: "bpackage",
+  //       weight: 400,
+  //       status: ProductStatus.PUBLISHED,
+  //       shipping_profile_id: shippingProfile.id,
+  //       images: [],
+  //       options: [{title: "default", values: ["default"]}],
+  //       variants: [
+  //         {
+  //           title: "Basic Package",
+  //           sku: "basic_package",
+  //           options: {default: "default"},
+  //           prices: [
+  //             {
+  //               amount: 0,
+  //               currency_code: "vnd",
+  //             },
+  //             {
+  //               amount: 0,
+  //               currency_code: "kmr",
+  //             },
+  //             {
+  //               amount: 0,
+  //               currency_code: "eur",
+  //             },
+  //             {
+  //               amount: 0,
+  //               currency_code: "usd",
+  //             },
+  //           ],
+  //           manage_inventory: false,
+  //         },
+  //       ],
+  //       sales_channels: [
+  //         {
+  //           id: defaultSalesChannel[0].id,
+  //         },
+  //       ],
+  //     },
+  //   }
+  // })
 
   await createDigitalProductWorkflow(container).run({
     input: {

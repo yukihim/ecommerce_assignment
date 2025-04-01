@@ -27,28 +27,29 @@ export default async function Nav() {
 
           <div className="flex items-center h-full">
             <LocalizedClientLink
-  href="/"
-  className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase font-extrabold tracking-widest"
-  data-testid="nav-store-link"
->
-  Medusa Store
-</LocalizedClientLink>
-
+              href="/"
+              className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase font-extrabold tracking-widest"
+              data-testid="nav-store-link"
+            >
+              CareBot
+            </LocalizedClientLink>
           </div>
 
           <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
             <div className="flex items-center gap-x-6 h-full">
               <LocalizedClientLink
-  className="text-lg font-semibold text-black hover:text-cyan-400 transition-colors duration-300"
-  href="/account"
-  data-testid="nav-account-link"
->
-  {!auth ? (
-    <Button variant="primary" className="px-4 py-2 rounded-lg">Log in</Button>
-  ) : (
-    <span className="hover:underline">Account</span>
-  )}
-</LocalizedClientLink>
+                className="text-lg font-semibold text-black hover:text-cyan-400 transition-colors duration-300"
+                href="/account"
+                data-testid="nav-account-link"
+              >
+                {!auth ? (
+                  <Button variant="primary" className="px-4 py-2 rounded-lg">
+                    Log in
+                  </Button>
+                ) : (
+                  <span className="hover:underline">Account</span>
+                )}
+              </LocalizedClientLink>
             </div>
             {auth && (
               <Suspense

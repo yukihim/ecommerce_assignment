@@ -107,8 +107,7 @@ const SideMenu = ({
                       />
                     </div>
                     <Text className="text-center text-gray-500 text-sm">
-                      © {new Date().getFullYear()} Medusa Store. All rights
-                      reserved.
+                      © {new Date().getFullYear()} CareBot. All rights reserved.
                     </Text>
                   </div>
                 </PopoverPanel>
