@@ -170,7 +170,7 @@ const AccountNav = ({
                   route={route!}
                   data-testid="digital-products-link"
                 >
-                  Digital Products
+                  Subscription plan
                 </AccountNavLink>
               </li>
               <li className="text-grey-700">

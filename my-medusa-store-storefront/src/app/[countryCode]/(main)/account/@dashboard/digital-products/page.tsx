@@ -4,8 +4,8 @@ import { getCustomerDigitalProducts } from "../../../../../../lib/data/digital-p
 import { DigitalProductsList } from "../../../../../../modules/account/components/digital-products-list"
 
 export const metadata: Metadata = {
-  title: "Digital Products",
-  description: "Overview of your purchased digital products.",
+  title: "Subscription plan",
+  description: "Overview of your purchased subscription plan.",
 }
 
 export default async function DigitalProducts() {
@@ -14,9 +14,9 @@ export default async function DigitalProducts() {
   return (
     <div className="w-full" data-testid="orders-page-wrapper">
       <div className="mb-8 flex flex-col gap-y-4">
-        <h1 className="text-2xl-semi">Digital Products</h1>
+        <h1 className="text-2xl-semi">Subscription plan</h1>
         <p className="text-base-regular">
-          View the digital products you've purchased and download them.
+          View the every subscription plans that you've purchased.
         </p>
       </div>
       <div>

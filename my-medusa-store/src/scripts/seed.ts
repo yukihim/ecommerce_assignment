@@ -71,7 +71,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
           },
           
           {
-            currency_code: "kmr",
+            currency_code: "khr",
           },
         ],
         default_sales_channel_id: defaultSalesChannel[0].id,
@@ -227,7 +227,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
             amount: 0,
           },
           {
-            currency_code: "kmr",
+            currency_code: "khr",
             amount: 0,
           },
           {
@@ -379,7 +379,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
   //             },
   //             {
   //               amount: 0,
-  //               currency_code: "kmr",
+  //               currency_code: "khr",
   //             },
   //             {
   //               amount: 0,
@@ -432,7 +432,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               {
                 amount: 1750000,
-                currency_code: "kmr",
+                currency_code: "khr",
               },
               {
                 amount: 12,
@@ -485,7 +485,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               {
                 amount: 2800000,
-                currency_code: "kmr",
+                currency_code: "khr",
               },
               {
                 amount: 20,
@@ -538,7 +538,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
               },
               {
                 amount: 0,
-                currency_code: "kmr",
+                currency_code: "khr",
               },
               {
                 amount: 0,

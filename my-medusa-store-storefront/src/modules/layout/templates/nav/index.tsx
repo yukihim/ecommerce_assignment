@@ -44,7 +44,7 @@ export default async function Nav() {
               >
                 {!auth ? (
                   <Button variant="primary" className="px-4 py-2 rounded-lg">
-                    Log in
+                    Get started
                   </Button>
                 ) : (
                   <span className="hover:underline">Account</span>
