@@ -412,7 +412,7 @@ export async function placeOrder(cartId?: string) {
     const countryCode =
       cartRes.order.shipping_address?.country_code?.toLowerCase()
     removeCartId()
-    redirect(`/${countryCode}/order/${cartRes?.order.id}/confirmed`)
+    redirect(`/order/${cartRes?.order.id}/confirmed`)
   }
 
   return cartRes.cart
@@ -463,4 +463,23 @@ export async function listCartOptions() {
     headers,
     cache: "force-cache",
   })
+}
+
+export async function updateSubscriptionData(
+  subscription_interval: string,
+  subscription_period: number
+) {
+  const cartId = getCartId()
+  
+  if (!cartId) {
+    throw new Error("No existing cart found when placing an order")
+  }
+
+  await updateCart({
+    metadata: {
+      subscription_interval,
+      subscription_period,
+    },
+  })
+  revalidateTag("cart")
 }

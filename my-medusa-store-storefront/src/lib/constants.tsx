@@ -6,28 +6,33 @@ import Bancontact from "@modules/common/icons/bancontact"
 import PayPal from "@modules/common/icons/paypal"
 
 /* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
+/* Map of payment provider_id to their title and icon. Add in any payment providers you want to use. */
 export const paymentInfoMap: Record<
   string,
   { title: string; icon: React.JSX.Element }
 > = {
-  pp_stripe_stripe: {
+  card: {
     title: "Credit card",
     icon: <CreditCard />,
   },
-  "pp_stripe-ideal_stripe": {
+  ideal: {
     title: "iDeal",
     icon: <Ideal />,
   },
-  "pp_stripe-bancontact_stripe": {
+  bancontact: {
     title: "Bancontact",
     icon: <Bancontact />,
   },
-  pp_paypal_paypal: {
+  paypal: {
     title: "PayPal",
     icon: <PayPal />,
   },
   pp_system_default: {
     title: "Manual Payment",
+    icon: <CreditCard />,
+  },
+  pp_stripe_stripe: {
+    title: "Stripe",
     icon: <CreditCard />,
   },
   // Add more payment providers here

@@ -6,6 +6,7 @@ import { HttpTypes } from "@medusajs/types"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import { getAuthHeaders, getCacheOptions } from "./cookies"
 import { getRegion, retrieveRegion } from "./regions"
+import { DigitalProductPreview } from "../../types/global"
 
 export const listProducts = async ({
   pageParam = 1,
@@ -62,8 +63,7 @@ export const listProducts = async ({
           limit,
           offset,
           region_id: region?.id,
-          fields:
-            "*variants.calculated_price,+variants.inventory_quantity,+metadata,+tags",
+          fields: "*variants.calculated_price,+variants.inventory_quantity,+metadata,+tags,*variants.calculated_price,*variants.digital_product",
           ...queryParams,
         },
         headers,
@@ -133,4 +133,32 @@ export const listProductsWithSort = async ({
     nextPage,
     queryParams,
   }
+}
+
+export const getDigitalProductPreview = async function ({
+  id,
+}: {
+  id: string
+}) {
+  const headers = {
+    ...(await getAuthHeaders()),
+  }
+
+  const next = {
+    ...(await getCacheOptions("products")),
+  }
+  const { previews } = await sdk.client.fetch<{
+    previews: DigitalProductPreview[]
+  }>(
+    `/store/digital-products/${id}/preview`, 
+    {
+      headers,
+      next,
+      cache: "force-cache",
+    }
+  )
+
+  // for simplicity, return only the first preview url
+  // instead you can show all the preview media to the customer
+  return previews.length ? previews[0].url : ""
 }
