@@ -39,27 +39,21 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
    npm install
    ```
 
-3. ‼️**IMPORTANT**‼️ Set up environment variables: Add the .env file i gave you on Messenger
+3. ‼️**IMPORTANT**‼️ Set up environment variables: Check for .env file.
 
-4. ‼️**IMPORTANT**‼️ Run migration for demo data:
-
-   ```bash
-   npm run migration
-   ```
-
-5. ‼️**IMPORTANT**‼️ Create admin user:
+4. ‼️**IMPORTANT**‼️ Run quick_start for setting up database, seed demo data and create admin user:
 
    ```bash
-   npm run ad
+   npm run quick_start
    ```
 
-6. Start the development server:
+5. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-7. Log in:
+6. Log in:
    - mail: ad@mail.com
    - password: ad
 
@@ -77,7 +71,7 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
    npm install
    ```
 
-3. ‼️**IMPORTANT**‼️ Set up environment variables: Add the .env.local file i gave you on Messenger
+3. ‼️**IMPORTANT**‼️ Set up environment variables: Check for .env.local file.
 
 4. ‼️**IMPORTANT**‼️ Replace NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY in .env.local from [Key](http://localhost:9000/app/settings/publishable-api-keys)
 
@@ -87,7 +81,9 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
    npm run dev
    ```
 
-6. If encounter with an issue related to Regions. Setup a new region WITH AT LEAST ONE countries at [here](http://localhost:9000/app/settings/regions)
+6. Delete the "\_medusa_jwt" cookies and reload the page.(If it exist)
+
+7. Register a new user in Account tab
 
 ## Resources
 
