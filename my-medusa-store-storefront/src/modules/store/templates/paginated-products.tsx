@@ -28,6 +28,8 @@ type PaginatedProductsParams = {
 type PackageData = {
   numberOfToken: string | number
   speed: string
+  description: string
+  addendums: string[]
 }
 
 export default async function PaginatedProducts({
@@ -89,21 +91,47 @@ export default async function PaginatedProducts({
     (a, b) => productOrder.indexOf(a.title) - productOrder.indexOf(b.title)
   )
   const mockData: Record<string, PackageData> = {
+    // "Basic Package": {
+    //   numberOfToken: 100,
+    //   speed: "Average",
+    //   description: "A fundamental CSM chatbot service with:",
+    //   addendums: [
+    //     "1. Escalation to Human",
+    //     "2. Support for complex inquiries - Basic Information Provision to answer common customer questions.",
+    //     "3. High Availability - Up to 24/7, with notifications in case of server downtime.",
+    //   ],
+    // },
     "Basic Package": {
-      numberOfToken: 100,
-      speed: "Average",
-    },
-    "Standard Package": {
       numberOfToken: 2000,
       speed: "High",
+      description: "A fundamental CSM chatbot service with:",
+      addendums: [
+        "1. Escalation to Human",
+        "2. Support for complex inquiries - Basic Information Provision to answer common customer questions.",
+        "3. High Availability - Up to 24/7, with notifications in case of server downtime.",
+      ],
     },
     "Premium Package": {
       numberOfToken: 10000,
       speed: "Very high",
+      description: "Includes all Basic Package features, plus:",
+      addendums: [
+        "1. Real-Time Warehouse Information to keep customers updated on stock availability.",
+        "2. Enhanced Personalization – The chatbot analyzes user intent and recommends relevant products and information to help increase revenue.",
+        "3. Finetuning chatbot to adapt specifically to the client's product catalog and common customer questions for better customization",
+      ],
     },
     "Enterprise Package": {
       numberOfToken: -1,
       speed: "Depend on contract",
+      description:
+        "A fully customized chatbot solution with all Premium features, plus:",
+      addendums: [
+        "1. Tailor-Made Chatbot Design to fit each business’s specific needs.",
+        "2. Cloud-Based Hosting to ensure zero downtime.",
+        "3. Omnichannel Support for seamless integration across multiple platforms.",
+        "4. Priority Customer Support – Faster assistance for a flexible and specialized chatbot solution.",
+      ],
     },
   }
 
@@ -160,7 +188,7 @@ export default async function PaginatedProducts({
               key={p.id}
               className="[&_td:first-child]:max-w-[400px] [&_td:first-child]:min-w-[100px] [&_td:first-child]:whitespace-nowrap"
             >
-              <Table.Cell className="grid grid-cols-1 min-h-[200px] text-wrap content-start txt-compact-medium p-3">
+              <Table.Cell className="grid grid-cols-1 min-h-[200px] h-full text-wrap content-start txt-compact-medium p-3">
                 <Text
                   className="text-2xl text-ui-fg-subtle"
                   data-testid="product-title"
@@ -169,7 +197,10 @@ export default async function PaginatedProducts({
                 </Text>
                 <div className="w-full h-1 bg-gray-400" />
                 <Text className="text-ui-fg-subtle mt-2 place-content-start min-h-[100px] text-wrap">
-                  {p.description}
+                  {mockData[p.title].description}
+                  {mockData[p.title].addendums.map((addendum, index) => (
+                    <ul key={index}>{addendum}</ul>
+                  ))}
                 </Text>
               </Table.Cell>
               <Table.Cell>

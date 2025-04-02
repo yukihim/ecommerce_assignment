@@ -30,7 +30,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
   const salesChannelModuleService = container.resolve(Modules.SALES_CHANNEL);
   const storeModuleService = container.resolve(Modules.STORE);
 
-  const countries = ["gb", "de", "dk", "se", "fr", "es", "it"];
+  const countries = ["vn", "kh", "la", "th", "my", "id", "sg"];
 
   logger.info("Seeding store data...");
   const [store] = await storeModuleService.listStores();
@@ -83,10 +83,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
     input: {
       regions: [
         {
-          name: "Europe",
-          currency_code: "eur",
+          name: "Southeast Asia",
+          currency_code: "vnd",
           countries,
-          payment_providers: ["pp_system_default"],
+          payment_providers: ["pp_system_default", "pp_stripe_stripe"],
         },
       ],
     },
@@ -109,10 +109,10 @@ export default async function seedDemoData({ container }: ExecArgs) {
     input: {
       locations: [
         {
-          name: "European Warehouse",
+          name: "Southeast Asia Warehouse",
           address: {
-            city: "Copenhagen",
-            country_code: "DK",
+            city: "Ho Chi Minh",
+            country_code: "VN",
             address_1: "",
           },
         },
@@ -152,38 +152,38 @@ export default async function seedDemoData({ container }: ExecArgs) {
   }
 
   const fulfillmentSet = await fulfillmentModuleService.createFulfillmentSets({
-    name: "European Warehouse delivery",
+    name: "Southeast Asia Warehouse delivery",
     type: "shipping",
     service_zones: [
       {
-        name: "Europe",
+        name: "Southeast Asia",
         geo_zones: [
           {
-            country_code: "gb",
+            country_code: "vn",
             type: "country",
           },
           {
-            country_code: "de",
+            country_code: "kh",
             type: "country",
           },
           {
-            country_code: "dk",
+            country_code: "la",
             type: "country",
           },
           {
-            country_code: "se",
+            country_code: "th",
             type: "country",
           },
           {
-            country_code: "fr",
+            country_code: "my",
             type: "country",
           },
           {
-            country_code: "es",
+            country_code: "sg",
             type: "country",
           },
           {
-            country_code: "it",
+            country_code: "id",
             type: "country",
           },
         ],
@@ -405,16 +405,15 @@ export default async function seedDemoData({ container }: ExecArgs) {
   await createDigitalProductWorkflow(container).run({
     input: {
       digital_product: {
-        name: "Standard Package",
+        name: "Basic Package",
         created_date: new Date(),
         expired_date: addMonths(new Date(), 1),
         medias: []
       },
       product: {
-        title: "Standard Package",
-        description:
-          "Provides 24/7 automated chatbot responses and multi-channel support, including website, Facebook, and Zalo, to enhance customer interaction.",
-        handle: "spackage",
+        title: "Basic Package",
+        description: "",
+        handle: "bpackage",
         weight: 400,
         status: ProductStatus.PUBLISHED,
         shipping_profile_id: shippingProfile.id,
@@ -422,8 +421,8 @@ export default async function seedDemoData({ container }: ExecArgs) {
         options: [{title: "default", values: ["default"]}],
         variants: [
           {
-            title: "Standard Package",
-            sku: "spackage",
+            title: "Basic Package",
+            sku: "bpackage",
             options: {default: "default"},
             prices: [
               {
@@ -465,8 +464,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
       },
       product: {
         title: "Premium Package",
-        description:
-         "Offers advanced AI features, allowing API integration into the CRM system, optimizing customer service processes, and increasing personalization." ,
+        description: "",
         handle: "ppackage",
         weight: 400,
         status: ProductStatus.PUBLISHED,
@@ -475,7 +473,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
         options: [{title: "default", values: ["default"]}],
         variants: [
           {
-            title: "Premium  Package",
+            title: "Premium Package",
             sku: "ppackage",
             options: {default: "default"},
             prices: [
@@ -518,8 +516,7 @@ export default async function seedDemoData({ container }: ExecArgs) {
       },
       product: {
         title: "Enterprise Package",
-        description:
-         "Custom-designed based on each business’s unique needs, providing a specialized and flexible chatbot solution for large companies.",
+        description:"",
         handle: "epackage",
         weight: 400,
         status: ProductStatus.PUBLISHED,
