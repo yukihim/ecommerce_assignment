@@ -31,6 +31,10 @@ export const paymentInfoMap: Record<
     title: "Manual Payment",
     icon: <CreditCard />,
   },
+  pp_stripe_stripe: {
+    title: "Stripe",
+    icon: <CreditCard />,
+  },
   // Add more payment providers here
 }
 
