@@ -196,12 +196,12 @@ export default async function PaginatedProducts({
                   <b>{p.title}</b>
                 </Text>
                 <div className="w-full h-1 bg-gray-400" />
-                <Text className="text-ui-fg-subtle mt-2 place-content-start min-h-[100px] text-wrap">
+                <div className="text-ui-fg-subtle mt-2 place-content-start min-h-[100px] text-wrap">
                   {mockData[p.title].description}
                   {mockData[p.title].addendums.map((addendum, index) => (
                     <ul key={index}>{addendum}</ul>
                   ))}
-                </Text>
+                </div>
               </Table.Cell>
               <Table.Cell>
                 {cheapestPrice ? (

@@ -28,6 +28,7 @@
     "pg": "^8.11.3",
     "qs": "^6.12.1",
     "react": "19.0.0-rc-66855b96-20241106",
+    "react-chatbotify": "^2.0.0-beta.32",
     "react-country-flag": "^3.1.0",
     "react-dom": "19.0.0-rc-66855b96-20241106",
     "server-only": "^0.0.1",
