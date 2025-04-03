@@ -25,10 +25,13 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
    docker-compose up
    ```
 3. Check for database in ecomstore_db. Input the command in Exec terminal of Docker
-   psql -d ecomstore -U quan
 
-   If the database does NOT exist, refer to section "Database does not exist" below.
-   If the database exist, refer to section "Setting up the Medusa Server" below.
+   ```bash
+   psql -d ecomstore -U quan
+   ```
+
+   - If the database does NOT exist, refer to section "Database does not exist" below.
+   - If the database exist, refer to section "Setting up the Medusa Server" below.
 
 ## Database does not exist
 
