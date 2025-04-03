@@ -24,6 +24,27 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
    ```bash
    docker-compose up
    ```
+3. Check for database in ecomstore_db. Input the command in Exec terminal of Docker
+   psql -d ecomstore -U quan
+
+   If the database does NOT exist, refer to section "Database does not exist" below.
+   If the database exist, refer to section "Setting up the Medusa Server" below.
+
+## Database does not exist
+
+1. Navigate to the server directory:
+
+   ```bash
+   cd my-medusa-store
+   ```
+
+2. Run quick_start for setting up database, seed demo data and create admin user:
+
+   ```bash
+   npm run quick_start
+   ```
+
+3. Continue to step 2 of the next section
 
 ### Setting up the Medusa Server
 
@@ -41,19 +62,13 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
 
 3. ‼️**IMPORTANT**‼️ Set up environment variables: Check for .env file.
 
-4. ‼️**IMPORTANT**‼️ Run quick_start for setting up database, seed demo data and create admin user:
-
-   ```bash
-   npm run quick_start
-   ```
-
-5. Start the development server:
+4. Start the development server:
 
    ```bash
    npm run dev
    ```
 
-6. Log in:
+5. Log in:
    - mail: ad@mail.com
    - password: ad
 
@@ -81,7 +96,7 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
    npm run dev
    ```
 
-6. Delete the "\_medusa_jwt" cookies and reload the page.(If it exist)
+6. Delete the "\_medusa_jwt" cookies in F12 Developer Tools > Application > Cookies and reload the page.(If it exist)
 
 7. Register a new user in Account tab
 
