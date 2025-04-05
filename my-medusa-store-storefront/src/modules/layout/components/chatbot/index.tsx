@@ -14,6 +14,11 @@ export default function ChatbotChatbox() {
       fontFamily: "Arial, sans-serif",
       showFooter: false,
     },
+    botBubble: {
+      simStream: true,
+      streamSpeed: 30,
+      animate: false,
+    },
     chatWindow: {
       showScrollbar: true,
     },
