@@ -97,7 +97,7 @@ const AccountNav = ({
                   >
                     <div className="flex items-center gap-x-2">
                       <Photo />
-                      <span>Digital Products</span>
+                      <span>Subscription Plan</span>
                     </div>
                     <ChevronDown className="transform -rotate-90" />
                   </LocalizedClientLink>
