@@ -3,6 +3,7 @@
 import ChatBot from "react-chatbotify"
 import { Button } from "@medusajs/ui"
 import { useEffect, useState } from "react"
+import { Styles, Settings } from "react-chatbotify"
 
 const BOT_URL = "http://127.0.0.1:8000/chat/agents"
 
@@ -11,8 +12,7 @@ export default function ChatbotChatbox() {
   let currentAgent = ""
   const id = "my-chatbot-id" // if not specified, will auto-generate uuidv4
 
-  const settings = {
-    isOpen: true,
+  const settings: Settings = {
     general: {
       primaryColor: "#000000",
       secondaryColor: "#000000",
@@ -38,6 +38,15 @@ export default function ChatbotChatbox() {
       title: "Assistant",
     },
     // other sections
+  }
+
+  const style: Styles = {
+    userBubbleStyle: {
+      textAlign: "left",
+      backgroundColor: "white",
+      color: "black",
+      border: "2px solid black",
+    },
   }
 
   async function run(prompt: string) {
@@ -134,5 +143,5 @@ export default function ChatbotChatbox() {
       path: "model_loop",
     },
   }
-  return <ChatBot id={id} flow={flow} settings={settings} />
+  return <ChatBot id={id} flow={flow} styles={style} settings={settings} />
 }
