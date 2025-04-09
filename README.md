@@ -3,6 +3,7 @@
 ## Overview
 
 This project consists of a Medusa e-commerce backend and a Next.js storefront. The backend handles product management, order processing, and other commerce functionalities, while the storefront provides the user interface for customers.
+[Link to GitHub repository](https://github.com/yukihim/ecommerce_assignment)
 
 ## Project Structure
 
@@ -105,7 +106,7 @@ This project consists of a Medusa e-commerce backend and a Next.js storefront. T
 
 ## Resources
 
-- Coi mấy cái dev trong storefront hoặc admin thôi chứ host gì thì bỏ qua: [Build & Deploy Production Ready MedusaJS Shop](https://www.youtube.com/watch?v=XjMWSwoAOQc)
+- Additional Youtube Help: [Build & Deploy Production Ready MedusaJS Shop](https://www.youtube.com/watch?v=XjMWSwoAOQc)
 - [Medusa Documentation](https://docs.medusajs.com/learn)
 
 ## License
